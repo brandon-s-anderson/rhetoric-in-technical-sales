@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Art of Persuasion in Technical Sales</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/theme/black.min.css" id="theme">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ethos: #6DB5F5;
+    --ethos-dim: rgba(109, 181, 245, 0.10);
+    --ethos-border: rgba(109, 181, 245, 0.25);
+    --ethos-glow: rgba(109, 181, 245, 0.06);
+    --pathos: #E74C4C;
+    --pathos-dim: rgba(231, 76, 76, 0.10);
+    --pathos-border: rgba(231, 76, 76, 0.25);
+    --pathos-glow: rgba(231, 76, 76, 0.06);
+    --logos: #7CB342;
+    --logos-dim: rgba(124, 179, 66, 0.10);
+    --logos-border: rgba(124, 179, 66, 0.25);
+    --logos-glow: rgba(124, 179, 66, 0.06);
+    --text-muted: rgba(255,255,255,0.45);
+    --text-soft: rgba(255,255,255,0.7);
+    --text-bright: rgba(255,255,255,0.92);
+    --card-bg: rgba(255,255,255,0.05);
+    --card-border: rgba(255,255,255,0.07);
+  }
+
+  .reveal {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  .reveal h1, .reveal h2, .reveal h3 {
+    font-family: 'Inter', system-ui, sans-serif;
+    text-transform: none;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .reveal h1 { font-size: 2.6em; line-height: 1.1; }
+  .reveal h2 { font-size: 1.7em; line-height: 1.2; }
+  .reveal h3 { font-size: 1.2em; }
+  .reveal p { line-height: 1.6; }
+
+  .reveal .slide-number {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    font-family: 'Inter', sans-serif;
+  }
+
+  .ethos { color: var(--ethos); }
+  .pathos { color: var(--pathos); }
+  .logos { color: var(--logos); }
+
+  .subtitle {
+    font-size: 0.48em;
+    color: var(--text-muted);
+    margin-top: 0.6em;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+  }
+
+  /* ---- ANIMATIONS ---- */
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 8px rgba(255,255,255,0.04); }
+    50% { box-shadow: 0 0 20px rgba(255,255,255,0.1); }
+  }
+
+  @keyframes breathe {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .animate-float { animation: float 5s ease-in-out infinite; }
+  .animate-pulse { animation: pulseGlow 3s ease-in-out infinite; }
+  .animate-fadein { animation: fadeInUp 0.8s ease-out both; }
+  .animate-breathe { animation: breathe 3s ease-in-out infinite; }
+
+  .reveal .slides section .fragment.scale-up {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .reveal .slides section .fragment.scale-up.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .reveal .slides section .fragment.blur-in {
+    opacity: 0;
+    filter: blur(8px);
+    transition: all 0.6s ease-out;
+  }
+  .reveal .slides section .fragment.blur-in.visible {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  .reveal .slides section .fragment.slide-right {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: all 0.5s ease-out;
+  }
+  .reveal .slides section .fragment.slide-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* ---- BIG STAT ---- */
+
+  .big-stat {
+    font-size: 6em;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, #F5A623, #ff6b6b, var(--ethos));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ---- BIG QUESTION ---- */
+
+  .big-question {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 2em;
+    font-weight: 700;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  /* ---- BLOCKQUOTE ---- */
+
+  .reveal blockquote {
+    background: rgba(255,255,255,0.04);
+    border-left: 4px solid rgba(255,255,255,0.18);
+    padding: 24px 36px;
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
+    font-size: 0.78em;
+    width: 80%;
+    margin: 24px auto;
+    border-radius: 0 12px 12px 0;
+    line-height: 1.75;
+  }
+
+  .reveal blockquote cite {
+    display: block;
+    text-align: right;
+    font-size: 0.75em;
+    color: var(--text-muted);
+    margin-top: 14px;
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ---- VIDEO ---- */
+
+  .video-container {
+    position: relative;
+    width: 100%;
+    max-width: 660px;
+    margin: 20px auto;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.5);
+  }
+
+  .video-container iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    display: block;
+  }
+
+  .video-caption {
+    font-size: 0.42em;
+    color: var(--text-muted);
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  /* ---- THREE PILLARS ---- */
+
+  .three-pillars {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .pillar-card {
+    flex: 1;
+    min-width: 210px;
+    max-width: 270px;
+    padding: 28px 22px;
+    border-radius: 16px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(8px);
+  }
+
+  .pillar-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .pillar-card h3 { margin: 0 0 4px 0; font-size: 1.4em; }
+  .pillar-card .greek { font-size: 0.52em; opacity: 0.45; margin-bottom: 12px; }
+  .pillar-card p { font-size: 0.55em; margin: 0; line-height: 1.55; }
+
+  .pillar-card.ethos-card { background: rgba(109, 181, 245, 0.18); border: 1px solid rgba(109, 181, 245, 0.35); }
+  .pillar-card.pathos-card { background: rgba(231, 76, 76, 0.18); border: 1px solid rgba(231, 76, 76, 0.35); }
+  .pillar-card.logos-card { background: rgba(124, 179, 66, 0.18); border: 1px solid rgba(124, 179, 66, 0.35); }
+
+  /* ---- EXAMPLE CARDS ---- */
+
+  .example-grid {
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .example-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+    background: var(--card-bg);
+    border-radius: 14px;
+    overflow: hidden;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--card-border);
+  }
+
+  .example-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+  }
+
+  .example-card .card-visual {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .example-card .card-visual iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .example-card .card-body {
+    padding: 18px 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .example-card h4 { margin: 0 0 8px 0; font-size: 0.72em; font-weight: 700; }
+  .example-card p { margin: 0; font-size: 0.5em; color: var(--text-soft); line-height: 1.6; }
+
+  /* ---- REVEAL GRID (exercise breakdown) ---- */
+
+  .reveal-grid {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+
+  .reveal-item {
+    flex: 1;
+    min-width: 230px;
+    max-width: 290px;
+    padding: 20px 18px;
+    border-radius: 12px;
+    text-align: left;
+  }
+
+  .reveal-item h4 { margin: 0 0 10px 0; font-size: 0.72em; }
+  .reveal-item p { margin: 0; font-size: 0.48em; line-height: 1.7; color: var(--text-bright); }
+
+  .reveal-item.ethos-reveal { background: var(--ethos-dim); border-left: 3px solid var(--ethos); }
+  .reveal-item.pathos-reveal { background: var(--pathos-dim); border-left: 3px solid var(--pathos); }
+  .reveal-item.logos-reveal { background: var(--logos-dim); border-left: 3px solid var(--logos); }
+
+  /* ---- SE TABLE ---- */
+
+  .se-table {
+    width: 94%;
+    margin: 20px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.44em;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .se-table th {
+    background: rgba(255,255,255,0.08);
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    letter-spacing: 0.03em;
+  }
+
+  .se-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .se-table tr:last-child td { border-bottom: none; }
+  .se-table .pillar-label { font-weight: 700; white-space: nowrap; font-size: 1.1em; }
+
+  /* ---- SPECIAL BOXES ---- */
+
+  .key-insight {
+    background: rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 32px 40px;
+    margin: 24px auto;
+    max-width: 680px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.07);
+    backdrop-filter: blur(6px);
+  }
+
+  .key-insight p { font-size: 0.65em; line-height: 1.65; margin: 0; }
+
+  .challenge-box {
+    background: linear-gradient(135deg, var(--ethos-glow), var(--pathos-glow), var(--logos-glow));
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 30px 38px;
+    margin: 24px auto;
+    max-width: 620px;
+    backdrop-filter: blur(6px);
+  }
+
+  .challenge-box h3 { margin: 0 0 14px 0; font-size: 0.88em; }
+  .challenge-box p, .challenge-box ol { font-size: 0.56em; margin: 0; line-height: 1.65; }
+  .challenge-box ol { padding-left: 20px; margin-top: 8px; }
+  .challenge-box ol li { margin-bottom: 6px; }
+
+  .discussion-prompt {
+    background: rgba(124,179,66,0.08);
+    border: 1px solid var(--logos-border);
+    border-radius: 12px;
+    padding: 16px 26px;
+    margin: 16px auto;
+    max-width: 560px;
+    font-size: 0.55em;
+  }
+
+  .discussion-prompt strong.ethos { color: var(--ethos); }
+  .discussion-prompt strong.pathos { color: var(--pathos); }
+  .discussion-prompt strong.logos { color: var(--logos); }
+
+  /* ---- COUNTDOWN TIMER ---- */
+
+  .countdown-timer {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: rgba(255,255,255,0.18);
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-top: 8px;
+    user-select: none;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .countdown-timer:hover { color: rgba(255,255,255,0.35); }
+  .countdown-timer.running { color: var(--pathos); }
+  .countdown-timer.done { color: var(--logos); }
+
+  /* ---- POLL CARDS ---- */
+
+  .poll-grid {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+
+  .poll-card {
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    padding: 24px 20px;
+    border-radius: 14px;
+    text-align: center;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  }
+
+  .poll-card:hover { transform: translateY(-3px); }
+  .poll-card.selected { border-width: 2px; background: rgba(255,255,255,0.08); }
+
+  .poll-card .poll-emoji { font-size: 2em; margin-bottom: 8px; }
+  .poll-card h4 { margin: 0 0 6px 0; font-size: 0.72em; }
+  .poll-card p { margin: 0; font-size: 0.48em; color: var(--text-muted); line-height: 1.5; }
+
+  /* ---- META CARDS ---- */
+
+  .meta-card {
+    flex: 1;
+    min-width: 230px;
+    max-width: 290px;
+    padding: 22px 20px;
+    border-radius: 14px;
+    text-align: left;
+  }
+
+  .meta-card h4 { margin: 0 0 10px 0; font-size: 0.7em; font-weight: 700; }
+  .meta-card p { margin: 0; font-size: 0.46em; line-height: 1.7; color: var(--text-bright); }
+
+  .meta-card.ethos-meta { background: var(--ethos-dim); border: 1px solid var(--ethos-border); }
+  .meta-card.pathos-meta { background: var(--pathos-dim); border: 1px solid var(--pathos-border); }
+  .meta-card.logos-meta { background: var(--logos-dim); border: 1px solid var(--logos-border); }
+
+  /* ---- SECTION BADGE ---- */
+
+  .section-badge {
+    display: inline-block;
+    padding: 5px 18px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.48em;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+
+  .section-badge.ethos-badge { background: var(--ethos-dim); color: var(--ethos); border: 1px solid var(--ethos-border); }
+  .section-badge.pathos-badge { background: var(--pathos-dim); color: var(--pathos); border: 1px solid var(--pathos-border); }
+  .section-badge.logos-badge { background: var(--logos-dim); color: var(--logos); border: 1px solid var(--logos-border); }
+
+  /* ---- KEYWORD ROW ---- */
+
+  .keyword-row {
+    display: flex;
+    gap: 9px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+
+  .keyword-pill {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.46em;
+    font-weight: 500;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text-muted);
+  }
+
+  /* ---- REFERENCE ROW ---- */
+
+  .reference-row {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.46em;
+    color: var(--text-muted);
+    margin-top: 28px;
+  }
+
+  .reference-row .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* ---- HAND RAISE ITEMS ---- */
+
+  .hand-raise-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 620px;
+    text-align: left;
+  }
+
+  .hand-raise-list li {
+    font-size: 0.7em;
+    padding: 14px 20px;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    border-left: 3px solid rgba(255,255,255,0.15);
+    line-height: 1.5;
+    color: var(--text-bright);
+  }
+
+  /* ---- WRAPPED CARD (Spotify-style) ---- */
+
+  .wrapped-card {
+    width: 200px;
+    height: 180px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #1db954, #1ed760, #191414);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+
+  .wrapped-card .wrapped-number {
+    font-size: 2em;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+  }
+
+  .wrapped-card .wrapped-label {
+    font-size: 0.6em;
+    color: rgba(255,255,255,0.8);
+    margin-top: 6px;
+    text-align: center;
+  }
+
+  .wrapped-card .wrapped-sub {
+    font-size: 0.45em;
+    color: rgba(255,255,255,0.5);
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  /* ---- MISC ---- */
+
+  .fragment.semi-fade-out.visible { opacity: 0.3; }
+  .icon-large { font-size: 1.8em; display: block; margin-bottom: 6px; }
+  .dim { color: var(--text-muted); }
+  .tight { margin-top: 0; margin-bottom: 0; }
+
+  .think-different-visual {
+    padding: 28px;
+    text-align: center;
+  }
+
+  .think-different-visual .td-quote {
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
+    font-size: 1.1em;
+    color: white;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  .think-different-visual .td-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 12px;
+  }
+
+  .think-different-visual .td-dots span {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.8;
+  }
+
+  .ted-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ted-badge {
+    background: #e62b1e;
+    color: white;
+    font-weight: 900;
+    font-size: 1.8em;
+    padding: 8px 22px;
+    border-radius: 6px;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+
+  .ted-sub {
+    font-size: 0.7em;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.1em;
+    font-weight: 300;
+  }
+
+  /* ---- STAGE PROGRESS DOTS ---- */
+
+  .stage-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 24px auto 0;
+  }
+
+  .stage-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    transition: background 0.3s ease;
+  }
+
+  .stage-dot.active { background: white; }
+</style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+  <!-- ==========================================
+       SLIDE 1: TITLE
+       ========================================== -->
+  <section data-background-gradient="radial-gradient(ellipse at 25% 45%, #1a0a2e 0%, #0d0d1a 55%, #080810 100%)" data-transition="fade">
+    <div style="animation: fadeInUp 1s ease-out both;">
+      <h1 style="margin-bottom: 0;">The Art of Persuasion</h1>
+      <h1 style="margin-top: 0; font-weight: 300; font-size: 1.5em; color: var(--text-muted);">in Technical Sales</h1>
+    </div>
+    <p class="subtitle" style="animation: fadeInUp 1s ease-out 0.4s both;">Ancient wisdom for the modern Solutions Engineer</p>
+    <div class="reference-row" style="margin-top: 50px; animation: fadeInUp 1s ease-out 0.8s both;">
+      <span class="dot" style="background: var(--ethos);"></span>
+      <span class="dot" style="background: var(--pathos);"></span>
+      <span class="dot" style="background: var(--logos);"></span>
+    </div>
+    <aside class="notes">
+      Welcome everyone. Today we're going to explore something that has nothing to do with APIs, integrations, or technical architecture — and everything to do with why some deals close and others don't. Let's start with a question.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 2: COLD OPEN — THE STAT
+       ========================================== -->
+  <section data-background-color="#060608" data-transition="fade">
+    <div class="big-stat" style="animation: fadeInUp 0.8s ease-out both;">95%</div>
+    <p style="font-size: 0.75em; margin-top: 16px; color: var(--text-soft); animation: fadeInUp 0.8s ease-out 0.3s both;">
+      of decision-making happens<br><strong style="color: white;">subconsciously</strong>
+    </p>
+    <p style="font-size: 0.4em; color: var(--text-muted); margin-top: 8px; animation: fadeInUp 0.8s ease-out 0.5s both;">
+      — Gerald Zaltman, <em>How Customers Think</em>, Harvard Business School
+    </p>
+    <p class="fragment blur-in" style="font-size: 0.65em; margin-top: 32px; color: var(--text-soft); line-height: 1.6;">
+      People <strong style="color: white;">decide first</strong>, then <strong style="color: white;">rationalize second</strong>.
+    </p>
+    <p class="fragment blur-in" style="font-size: 0.72em; margin-top: 16px; color: #F5A623;">
+      Are we focusing too much on the other 5%?
+    </p>
+    <aside class="notes">
+      Let this number sink in. 95%. Gerald Zaltman at Harvard Business School found that the vast majority of purchasing decisions happen below conscious awareness. Click to reveal the implication: people decide first, then rationalize second. The spreadsheet doesn't create the decision — it justifies the decision they've already made emotionally. Then the provocative question lands: if that's true, why do we lead with features? This is the hook.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 3: COLD OPEN — RAISE YOUR HAND
+       ========================================== -->
+  <section data-background-color="#060608" data-transition="fade">
+    <h2 style="font-weight: 400;">Raise your hand if you've ever...</h2>
+    <ul class="hand-raise-list">
+      <li class="fragment slide-right" data-fragment-index="1">
+        &#9995;&ensp; Given a <strong>technically flawless</strong> demo — and still lost the deal
+      </li>
+      <li class="fragment slide-right" data-fragment-index="2">
+        &#9995;&ensp; Had a prospect say <strong>"impressive"</strong> — and then go silent
+      </li>
+      <li class="fragment slide-right" data-fragment-index="3">
+        &#9995;&ensp; Lost to a competitor with an <strong>objectively worse</strong> product
+      </li>
+    </ul>
+    <p class="fragment blur-in" data-fragment-index="4" style="font-size: 0.65em; color: var(--text-soft); margin-top: 28px;">
+      It wasn't your product knowledge that failed you.<br>
+      <span class="fragment blur-in" data-fragment-index="5" style="color: white; font-weight: 600;">The answer is 2,400 years old.</span>
+    </p>
+    <aside class="notes">
+      Click through each one. Watch the hands go up. Every SE has experienced all three. The energy in the room shifts — you've made it personal. They're leaning in. Then hit them with: "The answer is 2,400 years old." That's the bridge to Aristotle.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 4: ARISTOTLE
+       ========================================== -->
+  <section data-background-gradient="radial-gradient(ellipse at 65% 40%, #0d1520 0%, #0a0a14 100%)" data-transition="slide">
+    <h2>Meet the Original Sales Coach</h2>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 44px; margin-top: 20px;">
+      <div style="text-align: center; flex-shrink: 0;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Aristotle_Altemps_Inv8575.jpg"
+             alt="Marble bust of Aristotle"
+             style="width: 200px; height: 240px; object-fit: cover; object-position: center 15%; border-radius: 14px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); filter: grayscale(30%) brightness(0.9);">
+        <p style="font-size: 0.42em; color: var(--text-muted); margin-top: 8px;">Athens, ~350 BC</p>
+      </div>
+      <div style="text-align: left; max-width: 480px;">
+        <h3 style="margin-bottom: 6px; background: linear-gradient(135deg, #F5A623, #ff6b6b, var(--ethos)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">Aristotle</h3>
+        <p style="font-size: 0.48em; color: var(--text-muted); margin: 0;">384 — 322 BC</p>
+        <p style="font-size: 0.58em; margin-top: 16px; line-height: 1.75;">
+          Student of Plato. Tutor to Alexander the Great.
+          Wrote <em>Rhetoric</em> — the first systematic study
+          of persuasion and public speaking.
+        </p>
+        <p style="font-size: 0.52em; color: #F5A623; margin-top: 12px; line-height: 1.6;">
+          His framework still powers every great pitch,
+          ad, and keynote you've ever seen.
+        </p>
+      </div>
+    </div>
+    <aside class="notes">
+      Quick background. Aristotle wasn't a philosopher in an ivory tower — he studied what made speakers WIN in the courts and assemblies of ancient Athens. Real-world persuasion with real stakes: freedom, money, political power. Around 350 BC, he wrote "Rhetoric" — the first textbook on persuasion. What he discovered has held up for 2,400 years.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 5: THE INSIGHT
+       ========================================== -->
+  <section data-transition="slide">
+    <span style="font-size: 1.8em; display: block; margin-bottom: 6px;">&#128161;</span>
+    <h2>The Insight</h2>
+    <blockquote>
+      "Persuasion is achieved by <span class="ethos">the speaker's personal character</span>,<br>
+      by <span class="pathos">the emotional state of the listener</span>,<br>
+      and by <span class="logos">the argument itself</span>."
+      <cite>&mdash; Aristotle, <em>Rhetoric</em>, ~350 BC</cite>
+    </blockquote>
+    <p style="font-size: 0.63em; margin-top: 28px;" class="fragment blur-in">
+      He identified <strong>three modes of persuasion</strong> that explain<br>
+      virtually all effective communication — then and now.
+    </p>
+    <aside class="notes">
+      Read the quote slowly. Let each colored phrase land. Aristotle observed that ALL persuasion — whether in a Greek courtroom or a Zoom demo — falls into three categories: WHO you are, HOW you make them feel, and WHAT you prove. Click to reveal the bottom line: three modes that explain all of it.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 6: THREE PILLARS
+       ========================================== -->
+  <section data-transition="slide">
+    <span style="font-size: 1.8em; display: block; margin-bottom: 6px;">&#127963;</span>
+    <h2>The Three Pillars of Persuasion</h2>
+    <div class="three-pillars">
+      <div class="pillar-card ethos-card fragment scale-up" data-fragment-index="1">
+        <h3 class="ethos">Ethos</h3>
+        <p class="greek">(&#942;&theta;&omicron;&sigmaf;)</p>
+        <p><strong>Credibility</strong></p>
+        <p style="margin-top: 8px;">"Trust me — I know what I'm talking about."</p>
+        <span class="section-badge ethos-badge" style="margin-top: 14px; font-size: 0.38em;">THE SPEAKER</span>
+      </div>
+      <div class="pillar-card pathos-card fragment scale-up" data-fragment-index="2">
+        <h3 class="pathos">Pathos</h3>
+        <p class="greek">(&pi;&#940;&theta;&omicron;&sigmaf;)</p>
+        <p><strong>Emotion</strong></p>
+        <p style="margin-top: 8px;">"Feel something — then act on it."</p>
+        <span class="section-badge pathos-badge" style="margin-top: 14px; font-size: 0.38em;">THE AUDIENCE</span>
+      </div>
+      <div class="pillar-card logos-card fragment scale-up" data-fragment-index="3">
+        <h3 class="logos">Logos</h3>
+        <p class="greek">(&lambda;&#972;&gamma;&omicron;&sigmaf;)</p>
+        <p><strong>Logic</strong></p>
+        <p style="margin-top: 8px;">"The numbers don't lie — here's the proof."</p>
+        <span class="section-badge logos-badge" style="margin-top: 14px; font-size: 0.38em;">THE MESSAGE</span>
+      </div>
+    </div>
+    <aside class="notes">
+      Click through each pillar. ETHOS: WHY should I listen to you? What makes you credible? PATHOS: HOW do you make me feel? Do I care enough to act? LOGOS: WHAT evidence do you have? Where's the proof? The most powerful communicators in history use all three. Let's see each one in the wild.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 7: ETHOS DEFINITION
+       ========================================== -->
+  <section data-background-color="#080d14" data-transition="slide">
+    <span class="section-badge ethos-badge">THE SPEAKER</span>
+    <h2><span class="ethos">Ethos</span> — Credibility</h2>
+    <p style="font-size: 0.68em; margin: 18px auto 0; line-height: 1.65;">
+      Persuasion through the <strong><span class="ethos">character and authority</span></strong> of the speaker.
+    </p>
+    <p style="font-size: 0.68em; margin: 6px auto 0; line-height: 1.65;">
+      The audience believes you because of <em>who you are</em>.
+    </p>
+    <div class="keyword-row">
+      <span class="keyword-pill">Expertise</span>
+      <span class="keyword-pill">Track Record</span>
+      <span class="keyword-pill">Endorsements</span>
+      <span class="keyword-pill">Reputation</span>
+      <span class="keyword-pill">Social Proof</span>
+    </div>
+    <aside class="notes">
+      Ethos is about trust. Before people evaluate your argument, they evaluate YOU. Are you credible? Do you have authority? Has someone they trust vouched for you? In Athens, this was your public reputation. Today, it's case studies, certifications, platform scale, or simply showing that you deeply understand their world.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 8: ETHOS EXAMPLES
+       ========================================== -->
+  <section data-background-color="#080d14">
+    <h2><span class="ethos">Ethos</span> in Action</h2>
+    <div class="example-grid">
+      <div class="example-card fragment scale-up" data-fragment-index="1">
+        <div class="card-visual think-different-visual" style="background: linear-gradient(135deg, #1a1a2e, #16213e);">
+          <p class="td-quote">"Here's to the<br>crazy ones."</p>
+          <div class="td-dots">
+            <span style="background: #e8e8e8;"></span>
+            <span style="background: #f5a623;"></span>
+            <span style="background: #6db5f5;"></span>
+            <span style="background: #7cb342;"></span>
+            <span style="background: #e74c3c;"></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4 class="ethos">Apple — "Think Different" (1997)</h4>
+          <p>Apple didn't say "our computers are better." They placed themselves alongside <em>Einstein, Gandhi, Picasso, and Lennon</em>. They borrowed credibility from history's greatest minds.</p>
+        </div>
+      </div>
+      <div class="example-card fragment scale-up" data-fragment-index="2">
+        <div class="card-visual ted-visual" style="background: linear-gradient(135deg, #1a0a0a, #2a1010);">
+          <div class="ted-badge">TED</div>
+          <p class="ted-sub">IDEAS WORTH SPREADING</p>
+        </div>
+        <div class="card-body">
+          <h4 class="ethos">The TED Talk Effect</h4>
+          <p>You've never heard of the speaker — but you'll watch for 18 minutes. Why? Because TED's brand gives them instant credibility. The <em>platform's</em> ethos transfers to the person on stage.</p>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      Two different kinds of ethos. Apple BORROWED credibility — they never said "our specs are better." They said "we belong with the geniuses." That's credibility by association. TED does something different — their platform TRANSFERS credibility. An unknown researcher gets 18 focused minutes because TED vouched for them. Think about this: when YOU reference similar merchants or demonstrate deep knowledge, you're doing both.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 8b: ETHOS DISCUSSION
+       ========================================== -->
+  <section data-background-color="#080d14" data-transition="slide">
+    <span style="font-size: 1.8em; display: block; margin-bottom: 6px;">&#128172;</span>
+    <h2><span class="ethos">Ethos</span> — Discussion</h2>
+    <div class="discussion-prompt" style="background: var(--ethos-dim); border-color: var(--ethos-border); max-width: 760px; margin-top: 28px; font-size: 0.62em; line-height: 1.7; text-align: center;">
+      <p style="margin: 0;">How do you build <strong class="ethos">credibility</strong> with merchants?</p>
+      <p style="margin: 12px 0 0;">What do you do early in the sales cycle to earn <strong class="ethos">trust</strong>?</p>
+    </div>
+    <aside class="notes">
+      Give 90 seconds for partner discussion. Walk the room and listen. Common answers: doing homework on their business, referencing similar merchants, showing you know the platform deeply, name-dropping logos, AE intro that establishes credibility. Collect 2-3 answers from the room before moving on.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 9: PATHOS DEFINITION
+       ========================================== -->
+  <section data-background-color="#140e06" data-transition="slide">
+    <span class="section-badge pathos-badge">THE AUDIENCE</span>
+    <h2><span class="pathos">Pathos</span> — Emotion</h2>
+    <p style="font-size: 0.68em; margin: 18px auto 0; line-height: 1.65;">
+      Persuasion by <strong><span class="pathos">moving the audience emotionally</span></strong>.
+    </p>
+    <p style="font-size: 0.68em; margin: 6px auto 0; line-height: 1.65;">
+      You make them <em>feel</em> something — and that feeling drives action.
+    </p>
+    <div class="keyword-row">
+      <span class="keyword-pill">Empathy</span>
+      <span class="keyword-pill">Fear</span>
+      <span class="keyword-pill">Hope</span>
+      <span class="keyword-pill">Frustration</span>
+      <span class="keyword-pill">Aspiration</span>
+      <span class="keyword-pill">Urgency</span>
+    </div>
+    <aside class="notes">
+      Pathos is the emotional lever. It's the most powerful pillar — and the one technical people underuse the most. Logic alone rarely moves people to act. You need to make them FEEL: hope, fear, frustration, excitement, relief. Emotions create urgency. They turn "that's interesting" into "I need to do something about this right now."
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 10: PATHOS EXAMPLES
+       ========================================== -->
+  <section data-background-color="#140e06">
+    <h2><span class="pathos">Pathos</span> in Action</h2>
+    <div class="example-grid">
+      <div class="example-card fragment scale-up" data-fragment-index="1">
+        <div class="card-visual" style="padding: 0;">
+          <iframe data-src="https://www.youtube.com/embed/Fq2CvmgoO7I?rel=0&modestbranding=1" allowfullscreen allow="encrypted-media" style="width:100%; height:100%; border:none;"></iframe>
+        </div>
+        <div class="card-body">
+          <h4 class="pathos">Nike — "Dream Crazy" (2018)</h4>
+          <p>"Believe in something. Even if it means sacrificing everything." People burned shoes. People bought shoes. Whatever you felt — <em>you felt</em>. That's pathos.</p>
+        </div>
+      </div>
+      <div class="example-card fragment scale-up" data-fragment-index="2">
+        <div class="card-visual" style="padding: 0;">
+          <iframe data-src="https://www.youtube.com/embed/XjJQBjWYDTs?rel=0&modestbranding=1" allowfullscreen allow="encrypted-media" style="width:100%; height:100%; border:none;"></iframe>
+        </div>
+        <div class="card-body">
+          <h4 class="pathos">Always — "#LikeAGirl" (2014)</h4>
+          <p>Asked adults to run "like a girl" — they mocked it. Asked young girls — they sprinted. The moment of realization is <em>devastating</em>. An insult became an anthem. <strong>90M+</strong> views.</p>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      Two different emotional angles. Nike "Dream Crazy": Polarizing, bold, identity-driven. It doesn't sell shoes. It sells conviction. Whether you agreed or disagreed with the Kaepernick stance, the ad made you FEEL something intensely. That's pathos. Always "#LikeAGirl": Starts lighthearted, then hits you with the realization of internalized bias. The emotional shift from amusement to discomfort to inspiration is masterful. 90M+ views, Emmy-winning. Neither ad mentions product features. Both drive action through emotion.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 10b: PATHOS DISCUSSION
+       ========================================== -->
+  <section data-background-color="#140e06" data-transition="slide">
+    <span style="font-size: 1.8em; display: block; margin-bottom: 6px;">&#128172;</span>
+    <h2><span class="pathos">Pathos</span> — Discussion</h2>
+    <div class="discussion-prompt" style="background: var(--pathos-dim); border-color: var(--pathos-border); max-width: 760px; margin-top: 28px; font-size: 0.62em; line-height: 1.7; text-align: center;">
+      <p style="margin: 0;">How do you connect <strong class="pathos">emotionally</strong> throughout the sales cycle?</p>
+      <p style="margin: 12px 0 0;">How do you make a merchant <strong class="pathos">feel</strong> the need to change?</p>
+    </div>
+    <aside class="notes">
+      Give 90 seconds. Listen for: acknowledging pain in discovery, painting future state in demo ("imagine your Monday morning"), connecting to their mission, making it personal rather than technical. Push them if answers are too surface-level — "How do you make them feel URGENCY, not just understanding?"
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 11: LOGOS DEFINITION
+       ========================================== -->
+  <section data-background-color="#0a120a" data-transition="slide">
+    <span class="section-badge logos-badge">THE MESSAGE</span>
+    <h2><span class="logos">Logos</span> — Logic</h2>
+    <p style="font-size: 0.68em; margin: 18px auto; line-height: 1.65;">
+      Persuasion through <strong><span class="logos">evidence, data, and reasoning</span></strong>.<br>
+      You prove your case with facts the audience can't argue with.
+    </p>
+    <div class="keyword-row">
+      <span class="keyword-pill">Data</span>
+      <span class="keyword-pill">Comparisons</span>
+      <span class="keyword-pill">Case Studies</span>
+      <span class="keyword-pill">Demonstrations</span>
+      <span class="keyword-pill">ROI</span>
+      <span class="keyword-pill">Logic Chains</span>
+    </div>
+    <aside class="notes">
+      Logos is the rational argument. Statistics, evidence, logical reasoning, demonstrations. This is where most SEs feel most at home — showing the product, running the numbers, proving the capability. Essential. But rarely sufficient alone. People don't change platforms because of a spreadsheet. The spreadsheet justifies the decision they've already made emotionally.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 12: LOGOS EXAMPLES
+       ========================================== -->
+  <section data-background-color="#0a120a">
+    <h2><span class="logos">Logos</span> in Action</h2>
+    <div class="example-grid">
+      <div class="example-card fragment scale-up" data-fragment-index="1">
+        <div class="card-visual" style="padding: 0;">
+          <iframe data-src="https://www.youtube.com/embed/ZUG9qYTJMsI?rel=0&modestbranding=1" allowfullscreen allow="encrypted-media" style="width:100%; height:100%; border:none;"></iframe>
+        </div>
+        <div class="card-body">
+          <h4 class="logos">Dollar Shave Club (2012)</h4>
+          <p><strong>$1/month vs. $20+</strong> for brand name. The math is undeniable. Humor gets you to watch. Logic gets you to subscribe. <strong>12K signups</strong> in 48 hours.</p>
+        </div>
+      </div>
+      <div class="example-card fragment scale-up" data-fragment-index="2">
+        <div class="card-visual" style="background: linear-gradient(135deg, #1db954 0%, #191414 100%); padding: 0;">
+          <div class="wrapped-card">
+            <div class="wrapped-number">47,283</div>
+            <div class="wrapped-label">minutes listened</div>
+            <div class="wrapped-sub">That's more than 99% of listeners</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4 class="logos">Spotify Wrapped</h4>
+          <p><strong>120M+ users</strong> voluntarily share their data every December. Why? Because personalized data, presented beautifully, is irresistible. Your own numbers become your favorite content.</p>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      Two different kinds of logos. Dollar Shave Club: The video cost $4,500 and got 28M views. The humor is pathos-adjacent, but the CORE argument is pure logos — why pay 20x more for the same thing? The math wins. Spotify Wrapped: Data as entertainment. Spotify turns your listening habits into content so compelling you SHARE it publicly. They proved that data, when it's personal and beautifully presented, drives engagement. For SEs: this is exactly what a great demo does — shows the MERCHANT'S data, not your slide deck.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 12b: LOGOS DISCUSSION
+       ========================================== -->
+  <section data-background-color="#0a120a" data-transition="slide">
+    <span style="font-size: 1.8em; display: block; margin-bottom: 6px;">&#128172;</span>
+    <h2><span class="logos">Logos</span> — Discussion</h2>
+    <div class="discussion-prompt" style="background: var(--logos-dim); border-color: var(--logos-border); max-width: 760px; margin-top: 28px; font-size: 0.62em; line-height: 1.7; text-align: center;">
+      <p style="margin: 0;">What's your strongest <strong class="logos">logical proof</strong> point in a sales cycle?</p>
+      <p style="margin: 12px 0 0;">How do you <strong class="logos">quantify</strong> the merchant's pain or <br> the <strong class="logos">value</strong> of your solution?</p>
+    </div>
+    <aside class="notes">
+      Give 90 seconds. This one usually flows easily — SEs are comfortable here. Listen for: live demos tailored to use cases, ROI calculations, TCO comparisons, migration timelines, performance benchmarks, case study data. Then challenge them: "This is where most of us live. The question isn't whether you're good at logos — it's whether you're ONLY doing logos."
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 13: EXERCISE INTRO
+       ========================================== -->
+  <section data-background-gradient="radial-gradient(ellipse at 50% 50%, #12121e 0%, #080810 100%)" data-transition="zoom">
+    <span class="icon-large">&#127919;</span>
+    <h2>Your Turn</h2>
+    <p style="font-size: 0.7em; max-width: 540px; margin: 18px auto; line-height: 1.65;">
+      You've seen each pillar individually.<br><br>
+      The masters <strong>weave all three together</strong> —<br>
+      sometimes in a single moment.
+    </p>
+    <p style="font-size: 0.58em; color: var(--text-muted); margin-top: 22px;">
+      Let's watch a masterclass in persuasion<br>from the world of tech.<br><br>
+      Your job: find the <span class="ethos">Ethos</span>,
+      <span class="pathos">Pathos</span>, and
+      <span class="logos">Logos</span>.
+    </p>
+    <aside class="notes">
+      Transition: You've seen each pillar in isolation. But the most persuasive communicators use all three simultaneously, often within seconds of each other. Time for a test. Let's watch what many consider the greatest product launch in history — and see if you can spot all three pillars at work.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 14: EXERCISE — STEVE JOBS iPHONE
+       ========================================== -->
+  <section data-background-color="#080810">
+    <h2>Steve Jobs — iPhone Introduction</h2>
+    <p style="font-size: 0.48em; color: var(--text-muted); margin-bottom: 14px;">Macworld San Francisco &bull; January 9, 2007</p>
+    <div class="video-container" style="max-width: 620px;">
+      <iframe data-src="https://www.youtube.com/embed/MnrJzXM7a6o?rel=0&modestbranding=1&start=0&end=270" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+    </div>
+    <div class="discussion-prompt" style="margin-top: 18px;">
+      <strong>Discuss:</strong> Where do you see <span class="ethos">Ethos</span>, <span class="pathos">Pathos</span>, and <span class="logos">Logos</span>?<br>
+      Turn to your neighbor. Two minutes.
+    </div>
+    <div id="exercise-timer" class="countdown-timer" onclick="startCountdown(this, 120)" title="Click to start 2-minute timer">
+      2:00
+    </div>
+    <aside class="notes">
+      Play the first ~4 minutes of the iPhone keynote — the classic "three revolutionary products" reveal. Then give 2 minutes for partner discussion. Walk the room. Listen for what they catch. Common answers: "His confidence" (ethos), "The excitement/applause" (pathos), "The feature comparisons" (logos). All correct. Move to the reveal.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 15: EXERCISE REVEAL
+       ========================================== -->
+  <section data-background-color="#080810" data-transition="slide">
+    <h2>The Breakdown</h2>
+    <div class="reveal-grid">
+      <div class="reveal-item ethos-reveal fragment scale-up" data-fragment-index="1">
+        <h4 class="ethos">Ethos</h4>
+        <p>
+          <em>"Every once in a while, a revolutionary product comes along that changes everything... Apple has been very fortunate — it's been able to introduce a few."</em><br><br>
+          Jobs doesn't brag. He states <strong>track record</strong> — Mac (1984), iPod (2001). His credibility isn't claimed; it's proven by history. You believe the next thing will be revolutionary because the last ones were.
+        </p>
+      </div>
+      <div class="reveal-item pathos-reveal fragment scale-up" data-fragment-index="2">
+        <h4 class="pathos">Pathos</h4>
+        <p>
+          <em>"An iPod... a phone... an internet communicator. Are you getting it?"</em><br><br>
+          The triple reveal. The audience laughs, then gasps, then erupts. Jobs creates <strong>anticipation, surprise, and delight</strong> in 30 seconds. The crowd's energy becomes the emotional proof.
+        </p>
+      </div>
+      <div class="reveal-item logos-reveal fragment scale-up" data-fragment-index="3">
+        <h4 class="logos">Logos</h4>
+        <p>
+          <em>Side-by-side grid comparing iPhone to every smartphone on the market.</em><br><br>
+          Features, ease of use, internet capability, visual interface. Systematic <strong>logical comparison</strong> proving the iPhone wins on every axis. Data that makes the emotional decision feel rational.
+        </p>
+      </div>
+    </div>
+    <p class="fragment blur-in" data-fragment-index="4" style="font-size: 0.56em; color: var(--pathos); margin-top: 20px;">
+      All three pillars. One keynote. The most successful product launch in history.
+    </p>
+    <aside class="notes">
+      Click through each card slowly. ETHOS: Jobs opens by referencing Apple's track record. He doesn't say "trust me" — he reminds you that the Mac and iPod both changed the world. That's earned credibility. PATHOS: The triple reveal is pure theater. "An iPod, a phone, an internet communicator... are you getting it?" The audience goes from curiosity to laughter to realization to pandemonium. LOGOS: Then he gets systematic. The comparison grid showing iPhone vs. every smartphone — data that makes the emotional response feel justified. This is the masterclass: emotion hooks you, logic anchors you, credibility earned over decades makes you believe it's real.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 16: TRANSITION TO SE
+       ========================================== -->
+  <section data-background-gradient="radial-gradient(ellipse at 50% 50%, #12121e 0%, #080810 100%)" data-transition="fade">
+    <h2>So what does this mean<br>for <em>us</em>?</h2>
+    <p style="font-size: 0.66em; max-width: 540px; margin: 28px auto; line-height: 1.65;">
+      We're not launching iPhones.<br><br>
+      But we <em>are</em> asking people to make<br>
+      <strong style="font-size: 1.15em;">one of the biggest technology decisions<br>of their business.</strong>
+    </p>
+    <p class="fragment blur-in" style="font-size: 0.54em; color: var(--text-muted); margin-top: 24px;">
+      Platform migrations are emotional. They're risky. They require trust.<br>
+      <span class="ethos">Ethos</span>, <span class="pathos">Pathos</span>, and <span class="logos">Logos</span> are your toolkit.
+    </p>
+    <aside class="notes">
+      Pause on this slide. Let the reframe land. We're asking merchants to rip out their commerce infrastructure and rebuild on a new platform. That affects their revenue, their team's workflows, their customers' experience. Spreadsheets alone won't get them there. They need to trust us (ethos), feel the pain of staying and the hope of moving (pathos), AND see the proof it works (logos).
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 17: SE APPLICATION TABLE
+       ========================================== -->
+  <section data-transition="slide">
+    <h2>The Three Pillars in Your Sales Cycle</h2>
+    <table class="se-table">
+      <thead>
+        <tr>
+          <th style="width: 85px;">Pillar</th>
+          <th>Discovery</th>
+          <th>Demo</th>
+          <th>Proposal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="fragment" data-fragment-index="1">
+          <td class="pillar-label ethos">Ethos</td>
+          <td>Show you've done your homework. Reference merchants in their industry.</td>
+          <td>Navigate confidently. Anticipate edge cases before they ask.</td>
+          <td>Cite case studies. Lead with platform scale and merchant success stories.</td>
+        </tr>
+        <tr class="fragment" data-fragment-index="2">
+          <td class="pillar-label pathos">Pathos</td>
+          <td>Acknowledge their pain. Make them feel heard and understood.</td>
+          <td>Paint the future state. <em>"This is your team's Monday morning."</em></td>
+          <td>Connect to their mission. <em>"This is how your team gets weekends back."</em></td>
+        </tr>
+        <tr class="fragment" data-fragment-index="3">
+          <td class="pillar-label logos">Logos</td>
+          <td>Quantify their pain: cost of downtime, dev hours wasted, lost conversion.</td>
+          <td>Build solutions for their use cases. Show it working with their data.</td>
+          <td>ROI models, migration timelines, total cost of ownership analysis.</td>
+        </tr>
+      </tbody>
+    </table>
+    <aside class="notes">
+      Walk through each row. ETHOS in Discovery: "I've seen merchants like you solve this exact problem." PATHOS in Demo: "Imagine your team seeing these orders flow in automatically — no more Sunday night fire drills." LOGOS in Proposal: "Here's the TCO analysis showing 40% savings over 3 years." The key insight: most SEs live almost entirely in the Logos row. We're comfortable with features and data. The opportunity is in the other two rows.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 18: THE BALANCE — TRIANGLE
+       ========================================== -->
+  <section data-transition="slide">
+    <h2 style="font-size: 1.35em;">The Key Insight: Balance</h2>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 6px;">
+      <svg viewBox="-15 -20 530 490" width="700" style="flex-shrink: 0;">
+        <polygon points="250,30 30,410 470,410" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="55%" r="35%">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.07)"/>
+            <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+          </radialGradient>
+        </defs>
+        <polygon points="250,30 30,410 470,410" fill="url(#glow)"/>
+
+        <text x="250" y="4" text-anchor="middle" fill="#6DB5F5" font-size="22" font-weight="700" font-family="Inter, sans-serif">ETHOS</text>
+        <text x="250" y="20" text-anchor="middle" fill="rgba(109,181,245,0.5)" font-size="13" font-weight="400" font-family="Inter, sans-serif">Speaker</text>
+        <text x="-12" y="442" text-anchor="start" fill="#E74C4C" font-size="22" font-weight="700" font-family="Inter, sans-serif">PATHOS</text>
+        <text x="-12" y="458" text-anchor="start" fill="rgba(231,76,76,0.5)" font-size="13" font-weight="400" font-family="Inter, sans-serif">Audience</text>
+        <text x="512" y="442" text-anchor="end" fill="#7CB342" font-size="22" font-weight="700" font-family="Inter, sans-serif">LOGOS</text>
+        <text x="512" y="458" text-anchor="end" fill="rgba(124,179,66,0.5)" font-size="13" font-weight="400" font-family="Inter, sans-serif">Message</text>
+
+        <circle cx="250" cy="283" r="10" fill="white" opacity="0.85"/>
+        <circle cx="250" cy="283" r="16" fill="none" stroke="white" stroke-width="1.5" opacity="0.35"/>
+        <text x="250" y="245" text-anchor="middle" fill="white" font-size="14" font-weight="700" font-family="Inter, sans-serif">SWEET</text>
+        <text x="250" y="261" text-anchor="middle" fill="white" font-size="14" font-weight="700" font-family="Inter, sans-serif">SPOT</text>
+
+        <circle cx="410" cy="380" r="7" fill="#7CB342" opacity="0.75"/>
+        <text x="410" y="348" text-anchor="middle" fill="rgba(255,255,255,0.65)" font-size="14" font-family="Inter, sans-serif">"Great product"</text>
+        <text x="410" y="362" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="12" font-family="Inter, sans-serif">— no urgency to move</text>
+
+        <circle cx="90" cy="380" r="7" fill="#E74C4C" opacity="0.75"/>
+        <text x="90" y="348" text-anchor="middle" fill="rgba(255,255,255,0.65)" font-size="14" font-family="Inter, sans-serif">"Love the vision"</text>
+        <text x="90" y="362" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="12" font-family="Inter, sans-serif">— can't justify to the CFO</text>
+
+        <circle cx="250" cy="78" r="7" fill="#6DB5F5" opacity="0.75"/>
+        <text x="250" y="106" text-anchor="middle" fill="rgba(255,255,255,0.65)" font-size="14" font-family="Inter, sans-serif">"Impressive resume"</text>
+        <text x="250" y="122" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="12" font-family="Inter, sans-serif">— but why should I care?</text>
+
+        <line x1="250" y1="283" x2="410" y2="380" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="250" y1="283" x2="90" y2="380" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="250" y1="283" x2="250" y2="78" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4,4"/>
+      </svg>
+    </div>
+    <p class="fragment blur-in" style="font-size: 0.52em; margin-top: 14px; color: var(--text-muted);">
+      Every conversation lands somewhere on this triangle.<br>
+      <strong style="color: white;">The goal is the center</strong> — balanced persuasion that moves people to act.
+    </p>
+    <aside class="notes">
+      This is the key visual. Walk through each dot. Near Logos: "Great product, but no urgency to move." You showed features, proved capability, but didn't make them FEEL the cost of inaction. Near Pathos: "Love the vision, but can't justify to the CFO." You created excitement but gave them nothing to build a business case with. On the bottom edge with no Ethos: they have data and emotion but don't trust the source. Near Ethos only: you're credible but boring. The sweet spot is the center: balanced use of all three.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 19: SELF-CHECK
+       ========================================== -->
+  <section data-background-gradient="radial-gradient(ellipse at 50% 50%, #12121e 0%, #080810 100%)" data-transition="slide">
+    <h2>Quick Self-Check</h2>
+    <p style="font-size: 0.62em; color: var(--text-muted); margin-bottom: 6px;">Be honest: which pillar do <em>you</em> default to?</p>
+    <div class="poll-grid">
+      <div class="poll-card fragment scale-up" data-fragment-index="1" onclick="selectPoll(this, 'logos')" style="border-color: var(--logos-border);">
+        <div class="poll-emoji">&#128202;</div>
+        <h4 class="logos">Features &amp; Data</h4>
+        <p>"Let me show you the product and walk through the numbers."</p>
+      </div>
+      <div class="poll-card fragment scale-up" data-fragment-index="2" onclick="selectPoll(this, 'pathos')" style="border-color: var(--pathos-border);">
+        <div class="poll-emoji">&#127912;</div>
+        <h4 class="pathos">Stories &amp; Vision</h4>
+        <p>"Imagine what your business looks like a year from now."</p>
+      </div>
+      <div class="poll-card fragment scale-up" data-fragment-index="3" onclick="selectPoll(this, 'ethos')" style="border-color: var(--ethos-border);">
+        <div class="poll-emoji">&#128170;</div>
+        <h4 class="ethos">Credibility &amp; Proof</h4>
+        <p>"We've helped similar brands solve this exact problem."</p>
+      </div>
+    </div>
+    <p class="fragment blur-in" data-fragment-index="4" style="font-size: 0.58em; margin-top: 24px; color: var(--text-muted);">
+      Most SEs default to <span class="logos">Logos</span>. That's natural for technical people.<br>
+      The best SEs <strong style="color: white;">consciously activate what's missing</strong>.
+    </p>
+    <aside class="notes">
+      Quick audience self-reflection. Ask for a show of hands or let them think privately. Most SEs will identify as Logos-first — we're technical people, it's natural. Some will say Ethos — they lean on case studies and expertise. Very few will say Pathos — and that's the gap. The insight: knowing your default helps you identify what's MISSING. If you always lead with features, you might be leaving emotion and trust on the table.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 20: PRACTICAL TIPS
+       ========================================== -->
+  <section data-transition="slide">
+    <h2 style="font-size: 1.3em;">Tactical Playbook</h2>
+    <p style="font-size: 0.48em; color: var(--text-muted); margin-bottom: 16px;">One actionable technique for each pillar — use on your next call</p>
+    <div class="three-pillars" style="margin-top: 10px;">
+      <div class="pillar-card ethos-card fragment scale-up" data-fragment-index="1" style="text-align: left; padding: 22px 20px;">
+        <h3 class="ethos" style="font-size: 1em; text-align: center;">Ethos Move</h3>
+        <p style="margin-top: 12px; font-size: 0.5em; line-height: 1.7;">
+          <strong>Open with intel, not intros.</strong><br>
+          Skip "let me tell you about us." Instead, start with something specific about <em>their</em> business:<br><br>
+          <span style="color: var(--ethos);">"I noticed you recently expanded to Germany — we've helped 3 merchants navigate EU checkout compliance this quarter."</span>
+        </p>
+      </div>
+      <div class="pillar-card pathos-card fragment scale-up" data-fragment-index="2" style="text-align: left; padding: 22px 20px;">
+        <h3 class="pathos" style="font-size: 1em; text-align: center;">Pathos Move</h3>
+        <p style="margin-top: 12px; font-size: 0.5em; line-height: 1.7;">
+          <strong>Name the emotion they won't.</strong><br>
+          Merchants describe symptoms. You name the feeling:<br><br>
+          <span style="color: var(--pathos);">"It sounds like your team is spending weekends putting out fires instead of building — that's exhausting and it's not sustainable."</span>
+        </p>
+      </div>
+      <div class="pillar-card logos-card fragment scale-up" data-fragment-index="3" style="text-align: left; padding: 22px 20px;">
+        <h3 class="logos" style="font-size: 1em; text-align: center;">Logos Move</h3>
+        <p style="margin-top: 12px; font-size: 0.5em; line-height: 1.7;">
+          <strong>Quantify what they're losing.</strong><br>
+          Don't just demo features. Calculate the cost of their current pain:<br><br>
+          <span style="color: var(--logos);">"If each platform incident costs 4 dev hours at $150/hr, and you're seeing 3 per month — that's $21K/year just fighting fires."</span>
+        </p>
+      </div>
+    </div>
+    <aside class="notes">
+      These are three concrete techniques they can use immediately. ETHOS: Don't start with "we're the leading..." Start with insight about THEIR business. Shows preparation, earns credibility instantly. PATHOS: Merchants will say "we have downtime issues." You say "that means your team is stressed and your customers are frustrated — that's not just a tech problem, it's a people problem." Name the feeling. LOGOS: Translate pain into dollars. "4 dev hours per incident × $150/hr × 3 incidents/month = $21K/year just on firefighting." Make the cost concrete.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 21: META-REVEAL SETUP
+       ========================================== -->
+  <section data-background-gradient="radial-gradient(ellipse at 40% 55%, #1a0a2e 0%, #080810 80%)" data-transition="fade">
+    <p style="font-size: 0.58em; color: var(--text-muted); margin-bottom: 12px;">One more thing...</p>
+    <h2 style="font-size: 1.8em;">Did you notice what I did<br>in this presentation?</h2>
+    <p class="fragment blur-in" style="font-size: 0.68em; margin-top: 30px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+      I used all three pillars on <em>you</em>.<br>
+      The entire time.
+    </p>
+    <aside class="notes">
+      Pause. Let the silence work. "One more thing" is itself a Steve Jobs callback — which is borrowed ethos. This is the most powerful moment of the talk. You're about to show them that the framework they just learned was being used ON them the whole time. That's the "aha" that cements the learning.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 22: META-REVEAL
+       ========================================== -->
+  <section data-background-gradient="linear-gradient(135deg, var(--ethos-glow) 0%, var(--pathos-glow) 50%, var(--logos-glow) 100%)" data-transition="slide">
+    <h2 style="font-size: 1.35em;">How This Talk Used All Three</h2>
+    <div class="reveal-grid" style="margin-top: 14px;">
+      <div class="meta-card ethos-meta fragment scale-up" data-fragment-index="1">
+        <h4 class="ethos">&#128309; Ethos</h4>
+        <p>
+          I cited <strong>Aristotle</strong> — 2,400 years of authority. I cited <strong>Harvard Business School</strong>. I used examples from <strong>Apple, Nike, Spotify, and Steve Jobs</strong> — brands you already respect. I borrowed <em>their</em> credibility to earn yours.
+        </p>
+      </div>
+      <div class="meta-card pathos-meta fragment scale-up" data-fragment-index="2">
+        <h4 class="pathos">&#128308; Pathos</h4>
+        <p>
+          I opened with <strong>"raise your hand if..."</strong> — shared vulnerability. I showed videos that made you <em>feel</em>. I reframed your job: <em>"You're not selling software — you're persuading people to change."</em> That hits identity. That's emotion.
+        </p>
+      </div>
+      <div class="meta-card logos-meta fragment scale-up" data-fragment-index="3">
+        <h4 class="logos">&#128994; Logos</h4>
+        <p>
+          I gave you a <strong>structured framework</strong>: three pillars, clear definitions, a mapping table, a balance diagram. The argument built logically: theory &rarr; examples &rarr; application. And <em>this very slide</em> — proving it works by showing you it just worked.
+        </p>
+      </div>
+    </div>
+    <p class="fragment blur-in" data-fragment-index="4" style="font-size: 0.6em; color: var(--pathos); margin-top: 20px;">
+      The framework works. You just experienced it.
+    </p>
+    <aside class="notes">
+      Click through each card slowly. Let each one land. ETHOS: I didn't start by saying "trust me, I know about persuasion." I cited Aristotle, Harvard, world-class brands. Borrowed credibility. PATHOS: The opening hand-raise, the emotional videos, the identity reframe about what your job really is. I didn't just explain emotion — I made you feel it. LOGOS: Three pillars, structured progression, the table, the triangle. And now THIS slide — using the presentation itself as proof that the framework works. That's logos within logos. This moment cements the learning because they EXPERIENCED it before they understood it intellectually.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 23: CLOSING QUOTE
+       ========================================== -->
+  <section data-transition="fade">
+    <blockquote style="border-left-color: rgba(255,255,255,0.12); margin-top: 0;">
+      "Of the modes of persuasion furnished by the spoken word there are three kinds &hellip;<br>
+      the first depends on <span class="ethos">the personal character of the speaker</span>;<br>
+      the second on <span class="pathos">putting the audience into a certain frame of mind</span>;<br>
+      the third on <span class="logos">the proof provided by the words of the speech itself</span>."
+      <cite>&mdash; Aristotle, <em>Rhetoric</em></cite>
+    </blockquote>
+    <p style="font-size: 0.7em; margin: 28px auto; max-width: 540px; line-height: 1.65;">
+      You're not just selling software.<br>
+      You're <strong>persuading people to change</strong>.<br><br>
+      That takes <span class="ethos">credibility</span>, <span class="pathos">emotion</span>, and <span class="logos">logic</span>.
+    </p>
+    <aside class="notes">
+      Full circle. Read the Aristotle quote one final time — slowly. Then land the key message: you're not in the software business. You're in the change business. And change requires all three pillars. Let this sit for a beat before moving to the call to action.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 24: CALL TO ACTION
+       ========================================== -->
+  <section data-background-gradient="radial-gradient(ellipse at 50% 55%, #12121e 0%, #080810 100%)" data-transition="slide">
+    <span style="font-size: 1.8em; display: block; margin-bottom: 6px;">&#9889;</span>
+    <h2>Your Challenge</h2>
+    <div class="challenge-box">
+      <h3>On Your Next Three Calls</h3>
+      <ol>
+        <li><strong>Before:</strong> Plan which pillar to lead with — and which one you usually skip</li>
+        <li><strong>During:</strong> Notice when you're only in one pillar — and consciously shift</li>
+        <li><strong>After:</strong> Rate yourself 1–5 on each pillar. Where's the gap?</li>
+      </ol>
+      <p style="margin-top: 16px; color: var(--pathos); font-weight: 600;">
+        The diagnostic question: <em>"Am I missing one?"</em>
+      </p>
+    </div>
+    <aside class="notes">
+      Give them something concrete and immediate. Three calls, three steps. The self-diagnostic question — "am I missing one?" — is the takeaway they should internalize. If a demo was all features (logos) but no emotional connection (pathos), that's a signal. If the energy was great but nothing was quantified, that's a signal too. The framework is simple. The practice is where the growth happens.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 25: QUICK REFERENCE
+       ========================================== -->
+  <section data-transition="slide">
+    <h2 style="font-size: 1.25em;">Quick Reference</h2>
+    <div class="three-pillars" style="margin-top: 12px;">
+      <div class="pillar-card ethos-card">
+        <h3 class="ethos" style="font-size: 1.15em;">Ethos</h3>
+        <p><strong>Build Trust</strong></p>
+        <p style="margin-top: 10px; font-size: 0.5em; font-style: italic;">"We helped [similar merchant] solve this exact problem."</p>
+        <p style="margin-top: 8px; font-size: 0.42em; color: var(--text-muted);">Preparation &bull; Expertise &bull; Case studies &bull; Track record</p>
+      </div>
+      <div class="pillar-card pathos-card">
+        <h3 class="pathos" style="font-size: 1.15em;">Pathos</h3>
+        <p><strong>Create Feeling</strong></p>
+        <p style="margin-top: 10px; font-size: 0.5em; font-style: italic;">"Imagine never fighting that workflow again."</p>
+        <p style="margin-top: 8px; font-size: 0.42em; color: var(--text-muted);">Pain &bull; Future state &bull; Urgency &bull; Identity &bull; Relief</p>
+      </div>
+      <div class="pillar-card logos-card">
+        <h3 class="logos" style="font-size: 1.15em;">Logos</h3>
+        <p><strong>Prove It</strong></p>
+        <p style="margin-top: 10px; font-size: 0.5em; font-style: italic;">"Here's the data — 40% faster checkout, 2x conversion."</p>
+        <p style="margin-top: 8px; font-size: 0.42em; color: var(--text-muted);">ROI &bull; Live demos &bull; Comparisons &bull; TCO analysis</p>
+      </div>
+    </div>
+    <div class="reference-row" style="margin-top: 22px; font-size: 0.5em;">
+      <span class="dot" style="background: var(--ethos);"></span>
+      <span>Earn the right to be heard</span>
+      <span style="margin: 0 8px; opacity: 0.25;">&#8594;</span>
+      <span class="dot" style="background: var(--pathos);"></span>
+      <span>Create urgency to act</span>
+      <span style="margin: 0 8px; opacity: 0.25;">&#8594;</span>
+      <span class="dot" style="background: var(--logos);"></span>
+      <span>Give proof to justify it</span>
+    </div>
+    <aside class="notes">
+      Leave this slide up for photos. The sequence matters: Ethos first (earn the right to be heard), Pathos second (create urgency to act), Logos third (give them the proof to justify the decision internally). The merchant decides emotionally, then rationalizes. Your job is to give them both the reason and the evidence.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 26: THANK YOU
+       ========================================== -->
+  <section data-background-gradient="radial-gradient(ellipse at 25% 45%, #1a0a2e 0%, #0d0d1a 55%, #080810 100%)" data-transition="fade">
+    <h2 style="font-weight: 300; font-size: 1.8em; margin-bottom: 8px;">Thank You</h2>
+    <p style="font-size: 0.6em; color: var(--text-muted);">Now go persuade someone to change.</p>
+    <div class="reference-row" style="margin-top: 50px;">
+      <span class="dot" style="background: var(--ethos);"></span>
+      <span class="dot" style="background: var(--pathos);"></span>
+      <span class="dot" style="background: var(--logos);"></span>
+    </div>
+    <aside class="notes">
+      End clean. Thank the group. "Now go persuade someone to change" is the final call to action — and itself uses all three pillars one last time: it assumes they CAN (ethos in them), it's motivating (pathos), and it's practical (logos — go do it). Clean, simple, memorable.
+    </aside>
+  </section>
+
+  <!-- ==========================================
+       SLIDE 27: APPENDIX
+       ========================================== -->
+  <section data-transition="slide">
+    <h2 style="font-size: 1.15em;">Appendix: How This Presentation Used All Three</h2>
+    <p style="font-size: 0.44em; color: var(--text-muted); margin-bottom: 12px;">Every section was designed with at least one pillar in mind</p>
+    <table class="se-table" style="font-size: 0.38em;">
+      <thead>
+        <tr>
+          <th style="width: 65px;">Slide</th>
+          <th style="width: 60px;">Pillar</th>
+          <th>How It Was Used</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Slide 2</td>
+          <td><span class="pillar-label logos">Logos</span></td>
+          <td>"95% of purchasing decisions are subconscious." A surprising statistic from Harvard creates immediate intellectual curiosity — using data to argue against relying on data alone.</td>
+        </tr>
+        <tr>
+          <td>Slide 3</td>
+          <td><span class="pillar-label pathos">Pathos</span></td>
+          <td>"Raise your hand if..." — shared vulnerability. Everyone who raised their hand just admitted a failure out loud. That's emotional connection through collective experience.</td>
+        </tr>
+        <tr>
+          <td>Slide 4</td>
+          <td><span class="pillar-label ethos">Ethos</span></td>
+          <td>Citing Aristotle — borrowing 2,400 years of intellectual authority. "Student of Plato, tutor to Alexander the Great" = ultimate credentials.</td>
+        </tr>
+        <tr>
+          <td>Slides 8, 10, 12</td>
+          <td><span class="pillar-label ethos">Ethos</span></td>
+          <td>Examples from Apple, Nike, TED, Spotify, Dollar Shave Club, Steve Jobs — borrowing credibility from brands the audience already trusts.</td>
+        </tr>
+        <tr>
+          <td>Slides 10</td>
+          <td><span class="pillar-label pathos">Pathos</span></td>
+          <td>Nike "Dream Crazy" and Always "#LikeAGirl" — emotionally charged videos that make you FEEL before you think.</td>
+        </tr>
+        <tr>
+          <td>Slide 14</td>
+          <td><span class="pillar-label pathos">Pathos</span></td>
+          <td>The Steve Jobs iPhone reveal — the audience's excitement, laughter, and applause create vicarious emotional engagement.</td>
+        </tr>
+        <tr>
+          <td>Slides 6, 17, 18</td>
+          <td><span class="pillar-label logos">Logos</span></td>
+          <td>Structured framework (three pillars), the SE Application Table, and the Balance Triangle — logical scaffolding that builds the argument step by step.</td>
+        </tr>
+        <tr>
+          <td>Slide 16</td>
+          <td><span class="pillar-label pathos">Pathos</span></td>
+          <td>"You're persuading people to make one of the biggest technology decisions of their business." — an identity reframe that makes the stakes personal.</td>
+        </tr>
+        <tr>
+          <td>Slides 21–22</td>
+          <td><span class="ethos">E</span> <span class="pathos">P</span> <span class="logos">L</span></td>
+          <td>The meta-reveal: showing the framework was used ON the audience. Credible (proof it was deliberate), emotional (the "aha" moment), and logical (the presentation itself is the evidence).</td>
+        </tr>
+      </tbody>
+    </table>
+    <aside class="notes">
+      This is the reference appendix for anyone who wants to study the structure. The cold open uses data ironically (logos to argue against pure logos). The hand-raise is pathos through shared vulnerability. Aristotle is borrowed ethos. The videos create emotion. The framework, table, and triangle are logical scaffolding. And the meta-reveal uses all three simultaneously. The presentation IS the proof.
+    </aside>
+  </section>
+
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/notes/notes.min.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    showSlideNumber: 'all',
+    transition: 'slide',
+    transitionSpeed: 'default',
+    width: 1280,
+    height: 720,
+    margin: 0.07,
+    center: true,
+    history: true,
+    controls: true,
+    progress: true,
+    navigationMode: 'linear',
+    plugins: [RevealNotes]
+  });
+
+  function startCountdown(el, seconds) {
+    if (el.dataset.running === 'true') return;
+    el.dataset.running = 'true';
+    el.classList.add('running');
+    let remaining = seconds;
+    const tick = () => {
+      const m = Math.floor(remaining / 60);
+      const s = remaining % 60;
+      el.textContent = m + ':' + String(s).padStart(2, '0');
+      if (remaining <= 0) {
+        clearInterval(iv);
+        el.textContent = "Time!";
+        el.classList.remove('running');
+        el.classList.add('done');
+        el.dataset.running = 'false';
+      }
+      remaining--;
+    };
+    tick();
+    const iv = setInterval(tick, 1000);
+  }
+
+  function selectPoll(card, type) {
+    card.parentElement.querySelectorAll('.poll-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    const colors = { ethos: 'var(--ethos-border)', pathos: 'var(--pathos-border)', logos: 'var(--logos-border)' };
+    card.style.borderColor = colors[type] || 'var(--card-border)';
+  }
+</script>
+</body>
+</html>
